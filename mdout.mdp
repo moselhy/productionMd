@@ -2,7 +2,7 @@
 ;	File 'mdout.mdp' was generated
 ;	By user: moselhy (1003)
 ;	On host: bieber1
-;	At date: Mon Oct  2 14:15:55 2017
+;	At date: Mon Oct  2 14:16:24 2017
 
 ;
 ;	Created by:
@@ -12,7 +12,7 @@
 ;	Data prefix:  /opt/gromacs/gromacs-2016.3
 ;	Working dir:  /home/moselhy/git/productionMd
 ;	Command line:
-;	  gmx grompp -f ions.mdp -c etge_solv.gro -p topol.top -o ions.tpr
+;	  gmx grompp -f ions.mdp -c etge_solv_ions.gro -p topol.top -o ions_afterneutr.tpr
 
 ; VARIOUS PREPROCESSING OPTIONS
 ; Preprocessor information: use cpp syntax.
