@@ -11,8 +11,8 @@ gmx genion -s ions_afterneutr.tpr -o etge_solv_ions_afterneutr.gro -p topol.top 
 -> Chose group 13 (SOL)
 gmx grompp -f minimization.mdp -c etge_solv_ions_afterneutr.gro -p topol.top -o em.tpr
 gmx mdrun -v -deffnm em
-gmx grompp -f equilibriation.mdp -c em.gro -p topol.top -o equilibriation.tpr
-gmx mdrun -deffnm nvt
-gmx grompp -f production.mdp -c equilibriation.gro -t equilibriation.cpt -p topol.top -o md_0_1.tpr
-gmx mdrun -deffnm md_0_1
+gmx grompp -f equilibration.mdp -c em.gro -p topol.top -o equilibration.tpr
+gmx mdrun -deffnm equilibration
+gmx grompp -f production.mdp -c equilibration.gro -t equilibration.cpt -p topol.top -o md_0_1.tpr
+gmx mdrun -v -deffnm md_0_1
 # Stop here
