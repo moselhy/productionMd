@@ -1,0 +1,47 @@
+title		        =  NRF2 NVT equilibration
+define                  = -DPOSRES	; position restrain the protein
+
+integrator              = md
+dt                      = 0.002
+nsteps                  = 50000		; 2 * 50000 = 100 ps
+nstlog                  = 500
+nstxout                 = 500
+nstvout                 = 500
+nstenergy               = 500
+
+continuation	        = no
+constraint_algorithm    = lincs
+constraints	        = all-bonds
+lincs_iter	        = 1		    
+lincs_order	        = 4
+
+cutoff-scheme           = Verlet
+ns_type		        = grid
+nstlist                 = 10
+rcoulomb                = 1.2
+rvdw                    = 1.2
+
+coulombtype             = pme
+pme_order	        = 4
+fourierspacing	        = 0.16
+
+vdwtype                 = Cut-off
+vdw-modifier            = Force-switch
+rvdw_switch             = 1.0
+
+tcoupl                  = V-rescale
+tc_grps                 = Protein    Water_and_ions
+tau_t                   = 0.1     0.1
+ref_t                   = 310    310
+
+nstcomm                 = 100
+comm_mode               = linear
+comm_grps               = Protein Water_and_ions
+
+pcoupl		        = no
+pbc			= xyz		   
+DispCorr		= EnerPres
+gen-vel                 = yes
+gen-temp                = 310
+gen-seed                = -1
+
