@@ -1,0 +1,18 @@
+# pwd: git/productionMd
+b gmx pdb2gmx -f etge.pdb -o etge_processed.gro -ff charmm36-jul2017
+#-> Chose water model 1 (TIP3P)
+b gmx editconf -f etge_processed.gro -o etge_newbox.gro -c -d 2 -bt dodecahedron
+b gmx solvate -cp etge_newbox.gro -cs spc216.gro -o etge_solv.gro -p topol.top
+b gmx grompp -f ions.mdp -c etge_solv.gro -p topol.top -o ions.tpr
+b gmx genion -s ions.tpr -o etge_solv_ions.gro -p topol.top -pname NA -np 4
+#-> Chose group 13 (SOL)
+b gmx grompp -f ions.mdp -c etge_solv_ions.gro -p topol.top -o ions_afterneutr.tpr
+b gmx genion -s ions_afterneutr.tpr -o etge_solv_ions_afterneutr.gro -p topol.top -conc 0.15 -pname NA -nname CL
+#-> Chose group 13 (SOL)
+b gmx grompp -f minimization.mdp -c etge_solv_ions_afterneutr.gro -p topol.top -o em.tpr
+b gmx mdrun -v -deffnm em
+b gmx grompp -f equilibration.mdp -c em.gro -p topol.top -o equilibration.tpr
+b gmx mdrun -deffnm equilibration
+b gmx grompp -f production.mdp -c equilibration.gro -t equilibration.cpt -p topol.top -o md_0_1.tpr
+b gmx mdrun -v -deffnm md_0_1
+# Stop here
