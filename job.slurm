@@ -17,5 +17,5 @@
 #SBATCH --time 0-12:00:00           # time (D-HH:MM:ss)
 echo "DEBUG: [$SLURM_JOB_ID]  [$(hostname)]  [$(date -R)]" > myoutput.err 
 export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-1}"
-mpiexec gmx_mpi mdrun -v -deffnm 1		# this is where your commands go, change accordingly to what you need  
+mpiexec gmx_mpi mdrun -v -deffnm 2 -noappend -cpi 1.cpt -s 1.tpr		# this is where your commands go, change accordingly to what you need  
 echo "DEBUG: [$(date -R)]" >> myoutput.err
