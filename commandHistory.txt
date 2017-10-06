@@ -1,5 +1,5 @@
 # pwd: git/productionMd
-b gmx pdb2gmx -f etge.pdb -o etge_processed.gro -ff charmm36-jul2017
+#b gmx pdb2gmx -f etge.pdb -o etge_processed.gro -ff charmm36-jul2017
 #-> Chose water model 1 (TIP3P)
 b gmx editconf -f etge_processed.gro -o etge_newbox.gro -c -d 2 -bt dodecahedron
 b gmx solvate -cp etge_newbox.gro -cs spc216.gro -o etge_solv.gro -p topol.top
