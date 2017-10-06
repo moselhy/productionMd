@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --account=def-jchoy4
-#SBATCH -J nonphosphoetge			 
-#SBATCH -e nonphosphoetge.err
-#SBATCH -o nonphosphoetge.log
+#SBATCH -J charmm36
+#SBATCH -e charmm36.err
+#SBATCH -o charmm36.log
 #SBATCH --nodes=1                # number of nodes
 #SBATCH --ntasks=8
 #SBATCH --cpus-per-task=4
